@@ -70,42 +70,86 @@
     <section class="py-5 bg-light">
         <div class="container">
             <h2 class="text-center mb-5">Ils nous font confiance</h2>
-            <div class="row g-4 justify-content-center">
-                <div class="col-md-5 reveal">
-                    <div class="card card-lift h-100 border-0 shadow-sm p-4">
-                        <p class="fs-5 fst-italic">"Un voyage fantastique en Asie ! L'équipe a été aux petits soins."</p>
-                        <div class="d-flex align-items-center mt-auto">
-                            <img class="avatar rounded-circle me-3" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop" alt="Marie D.">
-                            <strong>Marie D.</strong>
+            <div id="testimonialsCarousel" class="carousel carousel-dark slide reveal" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row justify-content-center">
+                            <div class="col-11 col-md-8 col-lg-6">
+                                <div class="card border-0 shadow-sm p-4 p-md-5 text-center">
+                                    <i class="bi bi-quote display-4 text-accent lh-1"></i>
+                                    <p class="fs-5 fst-italic">"Un voyage fantastique en Asie ! L'équipe a été aux petits soins."</p>
+                                    <div class="d-flex align-items-center justify-content-center mt-2">
+                                        <img class="avatar rounded-circle me-3" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop" alt="Marie D.">
+                                        <strong>Marie D.</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row justify-content-center">
+                            <div class="col-11 col-md-8 col-lg-6">
+                                <div class="card border-0 shadow-sm p-4 p-md-5 text-center">
+                                    <i class="bi bi-quote display-4 text-accent lh-1"></i>
+                                    <p class="fs-5 fst-italic">"Service impeccable, je recommande vivement !"</p>
+                                    <div class="d-flex align-items-center justify-content-center mt-2">
+                                        <img class="avatar rounded-circle me-3" src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=100&h=100&fit=crop" alt="Pierre L.">
+                                        <strong>Pierre L.</strong>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-5 reveal">
-                    <div class="card card-lift h-100 border-0 shadow-sm p-4">
-                        <p class="fs-5 fst-italic">"Service impeccable, je recommande vivement !"</p>
-                        <div class="d-flex align-items-center mt-auto">
-                            <img class="avatar rounded-circle me-3" src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=100&h=100&fit=crop" alt="Pierre L.">
-                            <strong>Pierre L.</strong>
-                        </div>
-                    </div>
+                <div class="carousel-indicators position-static mt-4 mb-0">
+                    <button type="button" data-bs-target="#testimonialsCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Témoignage 1"></button>
+                    <button type="button" data-bs-target="#testimonialsCarousel" data-bs-slide-to="1" aria-label="Témoignage 2"></button>
                 </div>
+                <button class="carousel-control-prev d-none d-md-flex" type="button" data-bs-target="#testimonialsCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Précédent</span>
+                </button>
+                <button class="carousel-control-next d-none d-md-flex" type="button" data-bs-target="#testimonialsCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Suivant</span>
+                </button>
             </div>
         </div>
     </section>
 
-    <footer class="site-footer text-white py-5">
+    <!-- Appel à l'action -->
+    <section class="cta text-center py-5" style="--img: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1920')">
+        <div class="container py-md-5 reveal">
+            <h2 class="display-6 mb-3">Prêt pour votre prochaine aventure ?</h2>
+            <p class="lead mb-4">Nos conseillers vous aident à construire le voyage de vos rêves.</p>
+            <a href="contact.html" class="btn btn-accent btn-lg rounded-pill px-5">Nous contacter</a>
+        </div>
+    </section>
+
+    <footer class="site-footer text-white pt-5 pb-4">
         <div class="container">
             <div class="row g-4">
-                <div class="col-md-6">
-                    <h3 class="h5">VoyageAventure</h3>
+                <div class="col-12 col-md-4">
+                    <a class="footer-brand h4 d-inline-block mb-2" href="index.html"><i class="bi bi-globe-europe-africa text-accent"></i> VoyageAventure</a>
                     <p class="text-white-50 mb-0">Votre partenaire voyage depuis 2015</p>
                 </div>
-                <div class="col-md-6">
-                    <h3 class="h5">Contact</h3>
-                    <p class="text-white-50 mb-1"><i class="bi bi-envelope me-2"></i>info@voyageaventure.fr</p>
-                    <p class="text-white-50 mb-0"><i class="bi bi-telephone me-2"></i>01 23 45 67 89</p>
+                <div class="col-12 col-sm-6 col-md-4">
+                    <h3 class="h5 mb-3">Navigation</h3>
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-2"><a href="index.html">Accueil</a></li>
+                        <li class="mb-2"><a href="destinations.html">Destinations</a></li>
+                        <li class="mb-2"><a href="apropos.html">À propos</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4">
+                    <h3 class="h5 mb-3">Contact</h3>
+                    <p class="mb-2"><a href="mailto:info@voyageaventure.fr"><i class="bi bi-envelope text-accent me-2"></i>info@voyageaventure.fr</a></p>
+                    <p class="mb-0"><a href="tel:+33123456789"><i class="bi bi-telephone text-accent me-2"></i>01 23 45 67 89</a></p>
                 </div>
             </div>
+            <hr class="border-light opacity-25 my-4">
+            <p class="text-center text-white-50 small mb-0">&copy; <span class="current-year"></span> VoyageAventure - Tous droits réservés</p>
         </div>
     </footer>
 

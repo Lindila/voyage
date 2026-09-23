@@ -1,5 +1,8 @@
 // VoyageAventure - scripts communs
 
+// Année courante dans le footer
+document.querySelectorAll(".current-year").forEach((el) => (el.textContent = new Date().getFullYear()));
+
 // Navbar floue au scroll
 const nav = document.querySelector(".site-nav");
 window.addEventListener("scroll", () => nav.classList.toggle("scrolled", window.scrollY > 50));
@@ -30,15 +33,20 @@ modal?.addEventListener("show.bs.modal", (event) => {
     const card = event.relatedTarget.closest(".card");
     modal.querySelector(".modal-title").textContent = card.querySelector(".card-title").textContent;
     modal.querySelector(".modal-img").src = card.querySelector("img").src;
-    modal.querySelector(".modal-body p").textContent = card.querySelector(".card-text").textContent;
+    modal.querySelector(".modal-img").alt = card.querySelector("img").alt;
+    modal.querySelector(".modal-description").textContent = card.querySelector(".card-text").textContent;
+    modal.querySelector(".modal-duration").textContent = card.querySelector(".duration").textContent.trim();
+    modal.querySelector(".modal-price").textContent = card.querySelector(".price").textContent;
 });
 
 // Formulaire de contact
 const form = document.querySelector(".needs-validation");
+const success = document.getElementById("success");
+success?.querySelector(".btn-close").addEventListener("click", () => success.classList.add("d-none"));
 form?.addEventListener("submit", (event) => {
     event.preventDefault();
     if (form.checkValidity()) {
-        document.getElementById("success").classList.remove("d-none");
+        success.classList.remove("d-none");
         form.reset();
         form.classList.remove("was-validated");
     } else {

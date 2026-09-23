@@ -35,6 +35,7 @@
     <section class="py-5">
         <div class="container">
             <!-- Filtres -->
+            <h2 class="h5 text-center mb-3">Filtrer par continent</h2>
             <div class="d-flex flex-wrap justify-content-center gap-2 mb-5">
                 <button class="btn btn-outline-dark rounded-pill active" data-filter="tous">Tous</button>
                 <button class="btn btn-outline-dark rounded-pill" data-filter="europe">Europe</button>
@@ -54,8 +55,8 @@
                             <h3 class="card-title h5">Paris, France</h3>
                             <p class="card-text text-muted">La ville lumière vous attend</p>
                             <div class="d-flex justify-content-between mb-3">
-                                <span><i class="bi bi-clock"></i> 7 jours</span>
-                                <strong class="text-accent">À partir de 599€</strong>
+                                <span class="duration"><i class="bi bi-clock"></i> 7 jours</span>
+                                <strong class="price text-accent">À partir de 599€</strong>
                             </div>
                             <button class="btn btn-accent w-100" data-bs-toggle="modal" data-bs-target="#detailsModal">Voir détails</button>
                         </div>
@@ -72,8 +73,8 @@
                             <h3 class="card-title h5">Tokyo, Japon</h3>
                             <p class="card-text text-muted">Tradition et modernité</p>
                             <div class="d-flex justify-content-between mb-3">
-                                <span><i class="bi bi-clock"></i> 10 jours</span>
-                                <strong class="text-accent">À partir de 1299€</strong>
+                                <span class="duration"><i class="bi bi-clock"></i> 10 jours</span>
+                                <strong class="price text-accent">À partir de 1299€</strong>
                             </div>
                             <button class="btn btn-accent w-100" data-bs-toggle="modal" data-bs-target="#detailsModal">Voir détails</button>
                         </div>
@@ -90,8 +91,8 @@
                             <h3 class="card-title h5">New York, USA</h3>
                             <p class="card-text text-muted">La ville qui ne dort jamais</p>
                             <div class="d-flex justify-content-between mb-3">
-                                <span><i class="bi bi-clock"></i> 5 jours</span>
-                                <strong class="text-accent">À partir de 899€</strong>
+                                <span class="duration"><i class="bi bi-clock"></i> 5 jours</span>
+                                <strong class="price text-accent">À partir de 899€</strong>
                             </div>
                             <button class="btn btn-accent w-100" data-bs-toggle="modal" data-bs-target="#detailsModal">Voir détails</button>
                         </div>
@@ -108,8 +109,8 @@
                             <h3 class="card-title h5">Safari Kenya</h3>
                             <p class="card-text text-muted">Au cœur de la savane</p>
                             <div class="d-flex justify-content-between mb-3">
-                                <span><i class="bi bi-clock"></i> 12 jours</span>
-                                <strong class="text-accent">À partir de 1899€</strong>
+                                <span class="duration"><i class="bi bi-clock"></i> 12 jours</span>
+                                <strong class="price text-accent">À partir de 1899€</strong>
                             </div>
                             <button class="btn btn-accent w-100" data-bs-toggle="modal" data-bs-target="#detailsModal">Voir détails</button>
                         </div>
@@ -126,8 +127,8 @@
                             <h3 class="card-title h5">Rome, Italie</h3>
                             <p class="card-text text-muted">La ville éternelle</p>
                             <div class="d-flex justify-content-between mb-3">
-                                <span><i class="bi bi-clock"></i> 6 jours</span>
-                                <strong class="text-accent">À partir de 499€</strong>
+                                <span class="duration"><i class="bi bi-clock"></i> 6 jours</span>
+                                <strong class="price text-accent">À partir de 499€</strong>
                             </div>
                             <button class="btn btn-accent w-100" data-bs-toggle="modal" data-bs-target="#detailsModal">Voir détails</button>
                         </div>
@@ -144,8 +145,8 @@
                             <h3 class="card-title h5">Bali, Indonésie</h3>
                             <p class="card-text text-muted">Paradis tropical</p>
                             <div class="d-flex justify-content-between mb-3">
-                                <span><i class="bi bi-clock"></i> 14 jours</span>
-                                <strong class="text-accent">À partir de 999€</strong>
+                                <span class="duration"><i class="bi bi-clock"></i> 14 jours</span>
+                                <strong class="price text-accent">À partir de 999€</strong>
                             </div>
                             <button class="btn btn-accent w-100" data-bs-toggle="modal" data-bs-target="#detailsModal">Voir détails</button>
                         </div>
@@ -155,33 +156,55 @@
         </div>
     </section>
 
-    <!-- Modale détails -->
-    <div class="modal fade" id="detailsModal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content overflow-hidden">
-                <img class="modal-img w-100 object-fit-cover" style="height: 250px" src="" alt="">
-                <div class="modal-body">
-                    <h2 class="modal-title h4"></h2>
-                    <p class="text-muted"></p>
-                    <a href="contact.html" class="btn btn-accent w-100">Demander un devis</a>
+    <!-- Modale détails (remplie par js/main.js) -->
+    <div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="detailsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content overflow-hidden border-0">
+                <div class="position-relative">
+                    <img class="modal-img w-100 object-fit-cover" src="" alt="">
+                    <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3" data-bs-dismiss="modal" aria-label="Fermer"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <h2 class="modal-title h4" id="detailsModalLabel"></h2>
+                    <p class="modal-description text-muted"></p>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between px-0"><span><i class="bi bi-clock text-accent me-2"></i>Durée</span><strong class="modal-duration"></strong></li>
+                        <li class="list-group-item d-flex justify-content-between px-0"><span><i class="bi bi-tag text-accent me-2"></i>Tarif</span><strong class="modal-price text-accent"></strong></li>
+                        <li class="list-group-item d-flex justify-content-between px-0"><span><i class="bi bi-check2-circle text-accent me-2"></i>Inclus</span><strong>Vol + hôtel + guide</strong></li>
+                    </ul>
+                </div>
+                <div class="modal-footer d-grid d-sm-flex gap-2 border-0 pt-0 px-4 pb-4">
+                    <button type="button" class="btn btn-outline-secondary flex-sm-fill m-0" data-bs-dismiss="modal">Fermer</button>
+                    <a href="contact.html" class="btn btn-accent flex-sm-fill m-0">Demander un devis</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <footer class="site-footer text-white py-5">
+    <footer class="site-footer text-white pt-5 pb-4">
         <div class="container">
             <div class="row g-4">
-                <div class="col-md-6">
-                    <h3 class="h5">VoyageAventure</h3>
+                <div class="col-12 col-md-4">
+                    <a class="footer-brand h4 d-inline-block mb-2" href="index.html"><i class="bi bi-globe-europe-africa text-accent"></i> VoyageAventure</a>
                     <p class="text-white-50 mb-0">Votre partenaire voyage depuis 2015</p>
                 </div>
-                <div class="col-md-6">
-                    <h3 class="h5">Contact</h3>
-                    <p class="text-white-50 mb-1"><i class="bi bi-envelope me-2"></i>info@voyageaventure.fr</p>
-                    <p class="text-white-50 mb-0"><i class="bi bi-telephone me-2"></i>01 23 45 67 89</p>
+                <div class="col-12 col-sm-6 col-md-4">
+                    <h3 class="h5 mb-3">Navigation</h3>
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-2"><a href="index.html">Accueil</a></li>
+                        <li class="mb-2"><a href="destinations.html">Destinations</a></li>
+                        <li class="mb-2"><a href="apropos.html">À propos</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4">
+                    <h3 class="h5 mb-3">Contact</h3>
+                    <p class="mb-2"><a href="mailto:info@voyageaventure.fr"><i class="bi bi-envelope text-accent me-2"></i>info@voyageaventure.fr</a></p>
+                    <p class="mb-0"><a href="tel:+33123456789"><i class="bi bi-telephone text-accent me-2"></i>01 23 45 67 89</a></p>
                 </div>
             </div>
+            <hr class="border-light opacity-25 my-4">
+            <p class="text-center text-white-50 small mb-0">&copy; <span class="current-year"></span> VoyageAventure - Tous droits réservés</p>
         </div>
     </footer>
 

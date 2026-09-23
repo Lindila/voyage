@@ -34,33 +34,60 @@
 
     <section class="py-5">
         <div class="container">
-            <div class="row g-5">
+            <div class="row g-4 g-lg-5">
                 <!-- Coordonnées -->
                 <div class="col-lg-5 reveal">
                     <h2 class="mb-4">Nos coordonnées</h2>
-                    <p><i class="bi bi-geo-alt fs-4 text-accent me-3"></i>123 Rue des Voyages, 75001 Paris</p>
-                    <p><i class="bi bi-telephone fs-4 text-accent me-3"></i>01 23 45 67 89</p>
-                    <p><i class="bi bi-envelope fs-4 text-accent me-3"></i>info@voyageaventure.fr</p>
-                    <p><i class="bi bi-clock fs-4 text-accent me-3"></i>Lun-Ven : 9h-18h · Sam : 10h-16h</p>
+                    <div class="d-flex align-items-start mb-4">
+                        <div class="icon-circle rounded-circle d-flex align-items-center justify-content-center me-3"><i class="bi bi-geo-alt"></i></div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-1">Adresse</h3>
+                            <p class="text-muted mb-0">123 Rue des Voyages<br>75001 Paris, France</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-start mb-4">
+                        <div class="icon-circle rounded-circle d-flex align-items-center justify-content-center me-3"><i class="bi bi-telephone"></i></div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-1">Téléphone</h3>
+                            <p class="text-muted mb-0"><a href="tel:+33123456789" class="link-secondary text-decoration-none">01 23 45 67 89</a></p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-start mb-4">
+                        <div class="icon-circle rounded-circle d-flex align-items-center justify-content-center me-3"><i class="bi bi-envelope"></i></div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-1">Email</h3>
+                            <p class="text-muted mb-0"><a href="mailto:info@voyageaventure.fr" class="link-secondary text-decoration-none text-break">info@voyageaventure.fr</a></p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-start mb-4">
+                        <div class="icon-circle rounded-circle d-flex align-items-center justify-content-center me-3"><i class="bi bi-clock"></i></div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-1">Horaires</h3>
+                            <p class="text-muted mb-0">Lun-Ven : 9h-18h<br>Sam : 10h-16h</p>
+                        </div>
+                    </div>
                     <img src="https://images.unsplash.com/photo-1530789253388-582c481c54b0?w=800" class="img-fluid rounded-4 shadow-sm mt-3" alt="Voyageurs en Cappadoce">
                 </div>
 
                 <!-- Formulaire -->
                 <div class="col-lg-7 reveal">
-                    <div class="card border-0 shadow p-4">
+                    <div class="card border-0 shadow p-4 p-md-5">
                         <h2 class="h3 mb-4">Envoyez-nous un message</h2>
-                        <div id="success" class="alert alert-success d-none">Merci ! Votre message a bien été envoyé.</div>
+                        <div id="success" class="alert alert-success alert-dismissible fade show d-none" role="alert">
+                            <i class="bi bi-check-circle-fill me-2"></i>Merci ! Votre message a bien été envoyé. Nous vous répondrons sous 48h.
+                            <button type="button" class="btn-close" aria-label="Fermer"></button>
+                        </div>
 
                         <form class="needs-validation row g-3" novalidate>
                             <div class="col-md-6">
-                                <label for="name" class="form-label">Nom complet</label>
+                                <label for="name" class="form-label">Nom complet *</label>
                                 <input type="text" class="form-control" id="name" required>
                                 <div class="invalid-feedback">Veuillez saisir votre nom.</div>
                             </div>
                             <div class="col-md-6">
-                                <label for="email" class="form-label">Adresse email</label>
+                                <label for="email" class="form-label">Adresse email *</label>
                                 <input type="email" class="form-control" id="email" required>
-                                <div class="invalid-feedback">Email invalide.</div>
+                                <div class="invalid-feedback">Veuillez saisir une adresse email valide.</div>
                             </div>
                             <div class="col-md-6">
                                 <label for="phone" class="form-label">Téléphone</label>
@@ -88,13 +115,16 @@
                                 </select>
                             </div>
                             <div class="col-12">
-                                <label for="message" class="form-label">Message</label>
-                                <textarea class="form-control" id="message" rows="5" required></textarea>
+                                <label for="message" class="form-label">Message *</label>
+                                <textarea class="form-control" id="message" rows="6" required></textarea>
                                 <div class="invalid-feedback">Veuillez écrire votre message.</div>
                             </div>
-                            <div class="col-12 form-check ms-2">
-                                <input class="form-check-input" type="checkbox" id="consent" required>
-                                <label class="form-check-label" for="consent">J'accepte de recevoir des informations sur vos offres</label>
+                            <div class="col-12">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="consent" required>
+                                    <label class="form-check-label" for="consent">J'accepte de recevoir des informations sur vos offres *</label>
+                                    <div class="invalid-feedback">Vous devez accepter avant d'envoyer.</div>
+                                </div>
                             </div>
                             <div class="col-12">
                                 <button type="submit" class="btn btn-accent btn-lg w-100">Envoyer le message</button>
@@ -106,19 +136,30 @@
         </div>
     </section>
 
-    <footer class="site-footer text-white py-5">
+    <footer class="site-footer text-white pt-5 pb-4">
         <div class="container">
             <div class="row g-4">
-                <div class="col-md-6">
-                    <h3 class="h5">VoyageAventure</h3>
+                <div class="col-12 col-md-4">
+                    <a class="footer-brand h4 d-inline-block mb-2" href="index.html"><i class="bi bi-globe-europe-africa text-accent"></i> VoyageAventure</a>
                     <p class="text-white-50 mb-0">Votre partenaire voyage depuis 2015</p>
                 </div>
-                <div class="col-md-6">
-                    <h3 class="h5">Contact</h3>
-                    <p class="text-white-50 mb-1"><i class="bi bi-envelope me-2"></i>info@voyageaventure.fr</p>
-                    <p class="text-white-50 mb-0"><i class="bi bi-telephone me-2"></i>01 23 45 67 89</p>
+                <div class="col-12 col-sm-6 col-md-4">
+                    <h3 class="h5 mb-3">Navigation</h3>
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-2"><a href="index.html">Accueil</a></li>
+                        <li class="mb-2"><a href="destinations.html">Destinations</a></li>
+                        <li class="mb-2"><a href="apropos.html">À propos</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4">
+                    <h3 class="h5 mb-3">Contact</h3>
+                    <p class="mb-2"><a href="mailto:info@voyageaventure.fr"><i class="bi bi-envelope text-accent me-2"></i>info@voyageaventure.fr</a></p>
+                    <p class="mb-0"><a href="tel:+33123456789"><i class="bi bi-telephone text-accent me-2"></i>01 23 45 67 89</a></p>
                 </div>
             </div>
+            <hr class="border-light opacity-25 my-4">
+            <p class="text-center text-white-50 small mb-0">&copy; <span class="current-year"></span> VoyageAventure - Tous droits réservés</p>
         </div>
     </footer>
 
