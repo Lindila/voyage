@@ -1,63 +1,47 @@
-// =========================================================
-// VoyageAventure - Scripts partagés
-// =========================================================
+// VoyageAventure - scripts communs
 
-document.addEventListener("DOMContentLoaded", () => {
-    // Année courante dans le footer
-    document.querySelectorAll(".current-year").forEach((el) => {
-        el.textContent = new Date().getFullYear();
+// Navbar floue au scroll
+const nav = document.querySelector(".site-nav");
+window.addEventListener("scroll", () => nav.classList.toggle("scrolled", window.scrollY > 50));
+
+// Apparition des blocs au scroll
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add("visible");
     });
+});
+document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
 
-    // ---------- Filtre des destinations ----------
-    const filterButtons = document.querySelectorAll("[data-filter]");
-    const destinations = document.querySelectorAll("[data-continent]");
-
-    filterButtons.forEach((button) => {
-        button.addEventListener("click", () => {
-            const filter = button.dataset.filter;
-
-            filterButtons.forEach((b) => b.classList.remove("active"));
-            button.classList.add("active");
-
-            destinations.forEach((card) => {
-                const visible = filter === "tous" || card.dataset.continent === filter;
-                card.classList.toggle("d-none", !visible);
-            });
+// Filtre des destinations
+document.querySelectorAll("[data-filter]").forEach((button) => {
+    button.addEventListener("click", () => {
+        document.querySelector("[data-filter].active").classList.remove("active");
+        button.classList.add("active");
+        document.querySelectorAll("[data-continent]").forEach((card) => {
+            const show = button.dataset.filter === "tous" || card.dataset.continent === button.dataset.filter;
+            card.classList.toggle("d-none", !show);
         });
     });
+});
 
-    // ---------- Modale "Voir détails" ----------
-    const detailsModal = document.getElementById("detailsModal");
-    if (detailsModal) {
-        detailsModal.addEventListener("show.bs.modal", (event) => {
-            const card = event.relatedTarget.closest(".card");
-            detailsModal.querySelector(".modal-title").textContent =
-                card.querySelector(".card-title").textContent;
-            detailsModal.querySelector(".modal-icon").textContent =
-                card.querySelector(".destination-image").textContent;
-            detailsModal.querySelector(".modal-description").textContent =
-                card.querySelector(".card-text").textContent;
-            detailsModal.querySelector(".modal-duration").textContent =
-                card.querySelector(".duration").textContent;
-            detailsModal.querySelector(".modal-price").textContent =
-                card.querySelector(".price").textContent;
-        });
-    }
+// Modale "Voir détails"
+const modal = document.getElementById("detailsModal");
+modal?.addEventListener("show.bs.modal", (event) => {
+    const card = event.relatedTarget.closest(".card");
+    modal.querySelector(".modal-title").textContent = card.querySelector(".card-title").textContent;
+    modal.querySelector(".modal-img").src = card.querySelector("img").src;
+    modal.querySelector(".modal-body p").textContent = card.querySelector(".card-text").textContent;
+});
 
-    // ---------- Validation du formulaire de contact ----------
-    const form = document.querySelector(".needs-validation");
-    if (form) {
-        form.addEventListener("submit", (event) => {
-            event.preventDefault();
-            event.stopPropagation();
-
-            if (form.checkValidity()) {
-                document.getElementById("form-success").classList.remove("d-none");
-                form.reset();
-                form.classList.remove("was-validated");
-                return;
-            }
-            form.classList.add("was-validated");
-        });
+// Formulaire de contact
+const form = document.querySelector(".needs-validation");
+form?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    if (form.checkValidity()) {
+        document.getElementById("success").classList.remove("d-none");
+        form.reset();
+        form.classList.remove("was-validated");
+    } else {
+        form.classList.add("was-validated");
     }
 });
